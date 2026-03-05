@@ -7,6 +7,7 @@
   --accent: #6b9bd1;
   --accent-hover: #8ab4e8;
   --border: rgba(255, 255, 255, 0.08);
+  --star-color: rgba(255, 255, 255, 0.8);
   --font-heading: "Outfit", system-ui, sans-serif;
   --font-body: "Source Sans 3", system-ui, sans-serif;
   --space-xs: 0.5rem;
@@ -68,6 +69,8 @@ body {
     radial-gradient(ellipse 80% 50% at 50% -20%, rgba(107, 155, 209, 0.08), transparent),
     var(--bg);
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -82,6 +85,8 @@ main {
   flex-direction: column;
   justify-content: center;
   gap: var(--space-lg);
+  position: relative;
+  z-index: 1;
 }
 
 .section {
@@ -134,6 +139,75 @@ main {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--border), transparent);
   opacity: 0.6;
+}
+
+/* --- Starfield background --- */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  background: var(--star-color);
+  pointer-events: none;
+  opacity: 0.25;
+  z-index: 0;
+}
+
+body::before {
+  box-shadow:
+    5vw 8vh var(--star-color),
+    18vw 25vh var(--star-color),
+    32vw 42vh var(--star-color),
+    46vw 58vh var(--star-color),
+    60vw 74vh var(--star-color),
+    72vw 90vh var(--star-color),
+    88vw 65vh var(--star-color),
+    12vw 50vh var(--star-color),
+    28vw 82vh var(--star-color),
+    44vw 96vh var(--star-color),
+    56vw 33vh var(--star-color),
+    80vw 18vh var(--star-color),
+    24vw 12vh var(--star-color),
+    68vw 48vh var(--star-color),
+    92vw 35vh var(--star-color);
+  animation: twinkle 11s ease-in-out infinite alternate;
+}
+
+body::after {
+  box-shadow:
+    10vw 15vh var(--star-color),
+    22vw 35vh var(--star-color),
+    36vw 55vh var(--star-color),
+    52vw 75vh var(--star-color),
+    66vw 90vh var(--star-color),
+    78vw 65vh var(--star-color),
+    90vw 45vh var(--star-color),
+    16vw 80vh var(--star-color),
+    40vw 25vh var(--star-color),
+    54vw 50vh var(--star-color),
+    70vw 30vh var(--star-color),
+    84vw 60vh var(--star-color);
+  opacity: 0.18;
+  filter: blur(0.3px);
+  animation: twinkle 17s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.18;
+    transform: translateY(0px) scale(0.9);
+  }
+  50% {
+    opacity: 0.65;
+    transform: translateY(1px) scale(1.15);
+  }
+  100% {
+    opacity: 0.18;
+    transform: translateY(0px) scale(0.9);
+  }
 }
 
 /* --- Bio --- */
@@ -193,6 +267,8 @@ main {
   padding: var(--space-md) var(--space-md) 0;
   border-top: 1px solid var(--border);
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .site-footer p {
