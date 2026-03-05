@@ -64,10 +64,10 @@ body {
   font-size: 1.0625rem;
   line-height: 1.65;
   color: var(--text);
-  background: var(--bg);
+  background-color: var(--bg);
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(107, 155, 209, 0.08), transparent),
-    var(--bg);
+    radial-gradient(ellipse 70% 45% at 50% -10%, rgba(214, 130, 214, 0.32), transparent),
+    linear-gradient(180deg, #6440a8 0%, #241238 55%, #020308 100%);
   -webkit-font-smoothing: antialiased;
   position: relative;
   overflow: hidden;
