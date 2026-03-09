@@ -8,3 +8,4 @@ dist/
 *.swp
 npm-debug.log
 
+.continue/rules/CONTINUE.md
